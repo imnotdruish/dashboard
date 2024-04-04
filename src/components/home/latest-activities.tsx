@@ -1,12 +1,14 @@
+import { useList } from '@refinedev/core'
+
 import { UnorderedListOutlined } from '@ant-design/icons'
 import { Card, List, Space } from 'antd'
-import React from 'react'
-import { Text } from '../text'
-import LatestActivitiesSkeleton from '../skeleton/latest-activities'
-import { useList } from '@refinedev/core'
-import { DASHBOARD_LATEST_ACTIVITIES_AUDITS_QUERY, DASHBOARD_LATEST_ACTIVITIES_DEALS_QUERY } from '@/graphql/queries'
-import CustomAvatar from '../custom-avatar'
 import dayjs from 'dayjs'
+
+import CustomAvatar from '../custom-avatar'
+import LatestActivitiesSkeleton from '../skeleton/latest-activities'
+
+import { Text } from '../text'
+import { DASHBOARD_LATEST_ACTIVITIES_AUDITS_QUERY, DASHBOARD_LATEST_ACTIVITIES_DEALS_QUERY } from '@/graphql/queries'
 
 const LatestActivities = () => {
 

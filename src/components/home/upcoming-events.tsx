@@ -1,29 +1,32 @@
+import { useList } from '@refinedev/core';
+
 import { CalendarOutlined } from '@ant-design/icons';
 import { Badge, Card, List } from 'antd'
+import dayjs from 'dayjs'
+
 import { Text } from '../text';
 import UpcomingEventsSkeleton from '../skeleton/upcoming-events';
 import { getDate } from '@/utilities/helpers';
-import { useList } from '@refinedev/core';
+
 import { DASHBOARD_CALENDAR_UPCOMING_EVENTS_QUERY } from '@/graphql/queries';
-import dayjs from 'dayjs'
 
 const UpcomingEvents = () => {
 
   const { data, isLoading } = useList({
-    resource: 'events',
+    resource: "events",
     pagination: { pageSize: 5 },
     sorters: [
       {
-        field: 'startDate',
-        order: 'asc'
+        field: "startDate",
+        order: "asc"
       }
     ],
     filters: [
       {
-        field: 'startDate',
-        operator: 'gte',
-        value: dayjs().format('YYYY-MM-DD')
-      }
+        field: "startDate",
+        operator: "gte",
+        value: dayjs().format("YYYY-MM-DD")
+      },
     ],
     meta: {
       gqlQuery: DASHBOARD_CALENDAR_UPCOMING_EVENTS_QUERY
@@ -32,14 +35,14 @@ const UpcomingEvents = () => {
 
   return (
     <Card 
-      style={{ height: '100%'}} 
-      headStyle={{ padding: '8px 16px'}} 
-      bodyStyle={{ padding: '0 1rem' }}
+      style={{ height: "100%"}} 
+      headStyle={{ padding: "8px 16px"}} 
+      bodyStyle={{ padding: "0 1rem" }}
       title={
         <div style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: '8px',
+          display: "flex",
+          alignItems: "center",
+          gap: "8px",
         }}>
           <CalendarOutlined />
           <Text size="sm" style={{ marginLeft: "0.7rem" }}>
@@ -58,8 +61,8 @@ const UpcomingEvents = () => {
         />
       ) : (
         <List
-          itemLayout='horizontal'
-          dataSource={[data?.data || []]}
+          itemLayout="horizontal"
+          dataSource={data?.data || []}
           renderItem={(item) => {
             const renderDate = getDate(item.startDate, item.endDate)
 
