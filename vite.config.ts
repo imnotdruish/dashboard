@@ -3,5 +3,14 @@ import { defineConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths"
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [tsconfigPaths({ root: __dirname }), react()],
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          antd: ["antd"],
+        },
+      },
+    },
+  },
 });
