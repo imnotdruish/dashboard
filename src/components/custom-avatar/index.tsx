@@ -5,7 +5,7 @@ type Props = AvatarProps & {
   name?: string
 }
 
- const CustomAvatar = ({ name, style, ...rest }: Props) => {
+ export const CustomAvatar = ({ name, style, ...rest }: Props) => {
   return (
     <AntdAvatar
       alt={'Javascript Mastery'}
@@ -21,7 +21,5 @@ type Props = AvatarProps & {
     >
       {getNameInitials(name || '')}
     </AntdAvatar>
-  )
-}
-
-export default CustomAvatar
+  );
+};

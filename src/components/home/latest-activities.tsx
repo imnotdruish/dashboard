@@ -4,7 +4,7 @@ import { UnorderedListOutlined } from '@ant-design/icons'
 import { Card, List, Space } from 'antd'
 import dayjs from 'dayjs'
 
-import CustomAvatar from '../custom-avatar'
+import { CustomAvatar } from '../custom-avatar'
 import LatestActivitiesSkeleton from '../skeleton/latest-activities'
 
 import { Text } from '../text'
