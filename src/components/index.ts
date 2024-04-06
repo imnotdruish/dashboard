@@ -11,6 +11,20 @@ import { Text } from "./text";
 import { CustomAvatar } from "./custom-avatar";
 import { SelectOptionWithAvatar } from "./select-option-with-avatar";
 import { PaginationTotal } from "./pagination-total";
+import { Accordion } from "./accordion";
+import { TextIcon} from "./text-icon";
+import { KanbanAddCardButton } from "./tasks/kanban/add-card-button";
+import { 
+  DescriptionForm, 
+  DescriptionHeader, 
+  DueDateForm, 
+  DueDateHeader, 
+  StageForm, 
+  TitleForm, 
+  UsersForm, 
+  UsersHeader, 
+} from "./form";
+import { UserTag } from "./tags/user-tag";
 
 export { 
   UpcomingEvents, 
@@ -23,7 +37,19 @@ export {
   DashboardTotalCountCard,
   LatestActivities,
   Text,
+  TextIcon,
   CustomAvatar,
   SelectOptionWithAvatar,
   PaginationTotal,
+  Accordion,
+  DescriptionForm, 
+  DescriptionHeader, 
+  DueDateForm, 
+  DueDateHeader, 
+  StageForm, 
+  TitleForm, 
+  UsersForm, 
+  UsersHeader,
+  KanbanAddCardButton,
+  UserTag,
 };

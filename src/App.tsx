@@ -1,29 +1,32 @@
-import { Authenticated, GitHubBanner, Refine, WelcomePage } from "@refinedev/core";
-import { DevtoolsPanel, DevtoolsProvider } from "@refinedev/devtools";
+import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
+
 import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
-
 import { useNotificationProvider } from "@refinedev/antd";
-import "@refinedev/antd/dist/reset.css";
-
-import { authProvider, dataProvider, liveProvider } from "./providers";
-import { Home, ForgotPassword, Login, Register, CompanyList } from "./pages";
-
+import { Authenticated, Refine } from "@refinedev/core";
+import { DevtoolsPanel, DevtoolsProvider } from "@refinedev/devtools";
 import routerBindings, {
   CatchAllNavigate,
   DocumentTitleHandler,
   UnsavedChangesNotifier,
 } from "@refinedev/react-router-v6";
+
 import { App as AntdApp } from "antd";
-import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
+
 import Layout from "./components/layout";
 import { resources } from "@/config/resources";
+import { authProvider, dataProvider, liveProvider } from "./providers";
 import Create from "./pages/company/create";
 import EditPage from "./pages/company/edit";
+import TasksCreatePage from "./components/tasks/create";
+import TasksEditPage from "./components/tasks/edit";
+import { Home, ForgotPassword, Login, Register, CompanyList } from "./pages";
+
+import "@refinedev/antd/dist/reset.css";
+import TasksListPage from "./pages/tasks/list";
 
 function App() {
   return (
     <BrowserRouter>
-      <GitHubBanner />
       <RefineKbarProvider>
           <AntdApp>
             <DevtoolsProvider>
@@ -55,13 +58,21 @@ function App() {
                         <Outlet />
                       </Layout>
                     </Authenticated>
+                  }>
+                    <Route index element={<Home />} />
+                    <Route path="/companies" >
+                      <Route index element={<CompanyList />} />
+                      <Route path="new" element={<Create />} />
+                      <Route path="edit/:id" element={<EditPage />} />
+                    </Route>
+                    <Route path="/tasks" element={
+                      <TasksListPage>
+                        <Outlet />
+                      </TasksListPage>
                     }>
-                      <Route index element={<Home />} />
-                      <Route path="/companies" >
-                        <Route index element={<CompanyList />} />
-                        <Route path="new" element={<Create />} />
-                        <Route path="edit/:id" element={<EditPage />} />
-                      </Route>
+                      <Route path="new" element={<TasksCreatePage />} />
+                      <Route path="edit/:id" element={<TasksEditPage />} />
+                    </Route>
                   </Route>
                 </Routes>
                 <RefineKbar />
