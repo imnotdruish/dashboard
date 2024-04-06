@@ -10,7 +10,7 @@ export const PaginationTotal = ({
   return (
     <span
       style={{
-        narginLeft: "16px",
+        marginLeft: "16px",
       }}
     >
       <span className="ant-text secondary">{total}</span> {entityName} in total
